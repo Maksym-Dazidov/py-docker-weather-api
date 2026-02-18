@@ -17,4 +17,4 @@ def get_weather(city:str) -> None:
 
 
 if __name__ == "__main__":
-    get_weather("Paris")
+    get_weather("Kiev")
