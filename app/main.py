@@ -1,20 +1,25 @@
 import requests
 import os
 from dotenv import load_dotenv
+
+URL = "https://api.weatherapi.com/v1/current.json"
+CITY = "Paris"
+API_KEY = os.getenv("API_KEY")
+if not API_KEY:
+    raise SystemExit("API_KEY not set")
 load_dotenv()
-def get_weather(city:str) -> None:
-    api_key = os.getenv("API_KEY")
-    url = "https://api.weatherapi.com/v1/current.json"
+
+
+def get_weather(city: str) -> None:
     params = {
-        "key": api_key,
+        "key": API_KEY,
         "q": city
     }
-    response = requests.get(url, params=params)
+    response = requests.get(URL, params=params)
     data = response.json()
     print(data["current"]["temp_c"])
     print(data["current"]["condition"]["text"])
 
 
-
 if __name__ == "__main__":
-    get_weather("Kiev")
+    get_weather(CITY)
