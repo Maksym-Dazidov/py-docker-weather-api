@@ -2,12 +2,12 @@ import requests
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
 URL = "https://api.weatherapi.com/v1/current.json"
 CITY = "Paris"
 API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     raise SystemExit("API_KEY not set")
-load_dotenv()
 
 
 def get_weather(city: str) -> None:
